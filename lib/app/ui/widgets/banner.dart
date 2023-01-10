@@ -32,7 +32,7 @@ class _CommonSliderState extends State<CommonSlider> {
               pauseAutoPlayOnTouch: true,
               viewportFraction: 0.89,
               pageSnapping: true,
-              height: 150,
+              height: 160,
               onPageChanged: (index, test) {
                 setState(() {
                   dotIndex = double.parse(index.toString());
