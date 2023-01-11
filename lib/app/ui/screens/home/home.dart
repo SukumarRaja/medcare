@@ -8,6 +8,8 @@ import '../../widgets/banner.dart';
 import '../../widgets/common_text.dart';
 import '../../widgets/home/doctors_card.dart';
 import '../../widgets/home/main_category.dart';
+import '../doctor/all_doctors.dart';
+import '../doctor/detail.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -43,7 +45,11 @@ class Home extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    const Icon(Icons.search)
+                    GestureDetector(
+                        onTap: () {
+                          Get.to(() => const AllDoctors());
+                        },
+                        child: const Icon(Icons.search))
                   ],
                 ),
               ),
@@ -136,10 +142,14 @@ class Home extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
-                  children: const [
-                    CommonText(text: "Available Doctor"),
-                    Spacer(),
-                    CommonText(text: "See all")
+                  children: [
+                    const CommonText(text: "Available Doctor"),
+                    const Spacer(),
+                    GestureDetector(
+                        onTap: () {
+                          Get.to(() => const AllDoctors());
+                        },
+                        child: const CommonText(text: "See all"))
                   ],
                 ),
               ),
@@ -157,7 +167,9 @@ class Home extends StatelessWidget {
                         patients: "1.20",
                         image:
                             "https://www.dragarwal.com/wp-content/uploads/2022/02/eye-doctor-popup.png",
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(() => DoctorsDetail());
+                        },
                       );
                     }),
               ),

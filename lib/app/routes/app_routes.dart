@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../ui/screens/home/main.dart';
 import '../ui/screens/login.dart';
 
 class AppRoutes {
@@ -6,6 +7,11 @@ class AppRoutes {
     GetPage(
       name: "/login",
       page: () => const Login(),
+      transition: Transition.zoom,
+    ),
+    GetPage(
+      name: "/homeMain",
+      page: () => HomeMain(),
       transition: Transition.zoom,
     )
   ];
