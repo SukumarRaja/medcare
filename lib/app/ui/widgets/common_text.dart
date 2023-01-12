@@ -9,13 +9,15 @@ class CommonText extends StatelessWidget {
       this.fontSize = AppFontSize.sixteen,
       this.fontColor = AppColors.black,
       this.fontWeight,
-      this.letterSpacing})
+      this.letterSpacing,
+      this.textAlign})
       : super(key: key);
   final String text;
   final double fontSize;
   final double? letterSpacing;
   final Color? fontColor;
   final FontWeight? fontWeight;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class CommonText extends StatelessWidget {
 
     return Text(
       text,
+      textAlign: textAlign,
       style: TextStyle(
           fontSize: media.width * fontSize,
           fontWeight: fontWeight,

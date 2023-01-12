@@ -2,32 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../controller/main.dart';
 import '../../themes/app_colors.dart';
+import '../appointment/appointments.dart';
+import '../appointment/history.dart';
+import '../notifications.dart';
 import 'home.dart';
 
 class HomeMain extends StatelessWidget {
   HomeMain({Key? key}) : super(key: key);
   final List<Widget> pages = [
-    Container(
-      child: Center(
-        child: Text("profile"),
-      ),
+    const Center(
+      child: Text("profile"),
     ),
-    Container(
-      child: Center(
-        child: Text("nofications"),
-      ),
-    ),
-    Home(),
-    Container(
-      child: Center(
-        child: Text("schedule"),
-      ),
-    ),
-    Container(
-      child: Center(
-        child: Text("History"),
-      ),
-    ),
+    const Notifications(),
+    const Home(),
+    const Appointments(),
+    const AppointmentsHistory()
   ];
 
   @override

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../ui/screens/appointment/book.dart';
 import '../ui/screens/home/main.dart';
 import '../ui/screens/login.dart';
 
@@ -13,6 +14,11 @@ class AppRoutes {
       name: "/homeMain",
       page: () => HomeMain(),
       transition: Transition.zoom,
-    )
+    ),
+    GetPage(
+      name: "/bookAppointment",
+      page: () => const BookAppointment(),
+      transition: Transition.zoom,
+    ),
   ];
 }

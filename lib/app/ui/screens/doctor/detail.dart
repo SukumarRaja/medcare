@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../controller/doctor.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
 import '../../widgets/common_text.dart';
-import '../../widgets/doctors/live_doctors_card.dart';
+import '../appointment/book.dart';
 
 class DoctorsDetail extends StatelessWidget {
   const DoctorsDetail({Key? key}) : super(key: key);
@@ -19,6 +18,7 @@ class DoctorsDetail extends StatelessWidget {
           children: [
             SingleChildScrollView(
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -66,88 +66,22 @@ class DoctorsDetail extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 50,
-                            margin: const EdgeInsets.only(top: 20),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.white.withOpacity(.2),
-                            ),
-                            child: const Icon(
-                              Icons.favorite,
-                              color: AppColors.white,
-                            ),
-                          ),
-                          const CommonText(
-                            text: "150+",
-                            fontColor: AppColors.white,
-                          ),
-                          const CommonText(
-                            text: "patient",
-                            fontColor: AppColors.white,
-                            fontSize: AppFontSize.twelve,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 50,
-                            margin: const EdgeInsets.only(top: 20),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.white.withOpacity(.2),
-                            ),
-                            child: const Icon(
-                              Icons.favorite,
-                              color: AppColors.white,
-                            ),
-                          ),
-                          const CommonText(
-                            text: "150+",
-                            fontColor: AppColors.white,
-                          ),
-                          const CommonText(
-                            text: "patient",
-                            fontColor: AppColors.white,
-                            fontSize: AppFontSize.twelve,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 50,
-                            margin: const EdgeInsets.only(top: 20),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.white.withOpacity(.2),
-                            ),
-                            child: const Icon(
-                              Icons.favorite,
-                              color: AppColors.white,
-                            ),
-                          ),
-                          const CommonText(
-                            text: "150+",
-                            fontColor: AppColors.white,
-                          ),
-                          const CommonText(
-                            text: "patient",
-                            fontColor: AppColors.white,
-                            fontSize: AppFontSize.twelve,
-                          ),
-                        ],
-                      ),
+                      buildCount(
+                          count: "${150}+",
+                          department: "Patients",
+                          icon: Icons.favorite),
+                      buildCount(
+                          count: "${10} years",
+                          department: "Experience",
+                          icon: Icons.work),
+                      buildCount(
+                          count: "${4.9}",
+                          department: "Ratings",
+                          icon: Icons.star),
                     ],
                   ),
                   Container(
-                    height: media.height,
+                    // height: media.height,
                     width: media.width,
                     margin: const EdgeInsets.only(top: 20),
                     decoration: const BoxDecoration(
@@ -186,6 +120,7 @@ class DoctorsDetail extends StatelessWidget {
                           padding: const EdgeInsets.all(15.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               const CommonText(
                                 text: "About Doctor",
@@ -216,44 +151,80 @@ class DoctorsDetail extends StatelessWidget {
                                 ],
                               ),
                               SizedBox(height: media.height * 0.01),
-                              Row(
-                                children: [
-                                  Container(
-                                    height: 50,
-                                    width: 50,
-                                    margin: const EdgeInsets.all(5.0),
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: AppColors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: AppColors.grey
-                                                  .withOpacity(.2),
-                                              blurRadius: 1,
-                                              spreadRadius: 1,
-                                              offset: const Offset(0.1, 0.3))
-                                        ],
-                                        image: const DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: NetworkImage(
-                                                "https://www.dragarwal.com/wp-content/uploads/2022/02/eye-doctor-popup.png"))),
-                                  ),
-                                  SizedBox(
-                                    height: media.height * 0.01,
-                                    child: ListView.builder(
-                                        itemCount: 5,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.horizontal,
-                                        itemBuilder: (context, int index) {
-                                          return const Icon(
-                                            Icons.star,
-                                            color: AppColors.primary,
-                                            size: 18,
-                                          );
-                                        }),
-                                  ),
-                                ],
-                              )
+                              ListView.builder(
+                                  itemCount: 5,
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  scrollDirection: Axis.vertical,
+                                  itemBuilder: (context, int index) {
+                                    return Row(
+                                      children: [
+                                        Container(
+                                          height: 50,
+                                          width: 50,
+                                          margin: const EdgeInsets.all(5.0),
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: AppColors.white,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: AppColors.grey
+                                                        .withOpacity(.2),
+                                                    blurRadius: 1,
+                                                    spreadRadius: 1,
+                                                    offset:
+                                                        const Offset(0.1, 0.3))
+                                              ],
+                                              image: const DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  image: NetworkImage(
+                                                      "https://www.dragarwal.com/wp-content/uploads/2022/02/eye-doctor-popup.png"))),
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            CommonText(
+                                              text: "Test user",
+                                              fontSize: AppFontSize.sixteen,
+                                              fontColor: AppColors.black
+                                                  .withOpacity(.3),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.star,
+                                                  color: AppColors.primary,
+                                                  size: 18,
+                                                ),
+                                                Icon(
+                                                  Icons.star,
+                                                  color: AppColors.primary,
+                                                  size: 18,
+                                                ),
+                                                Icon(
+                                                  Icons.star,
+                                                  color: AppColors.primary,
+                                                  size: 18,
+                                                ),
+                                                Icon(
+                                                  Icons.star,
+                                                  color: AppColors.primary,
+                                                  size: 18,
+                                                ),
+                                                Icon(
+                                                  Icons.star,
+                                                  color: AppColors.primary,
+                                                  size: 18,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  }),
+                              SizedBox(height: media.height * 0.05),
                             ],
                           ),
                         ),
@@ -270,7 +241,7 @@ class DoctorsDetail extends StatelessWidget {
                 child: Center(
                   child: GestureDetector(
                     onTap: () {
-
+                      Get.to(()=>BookAppointment());
                     },
                     child: Center(
                       child: Container(
@@ -286,7 +257,7 @@ class DoctorsDetail extends StatelessWidget {
                         ),
                         child: const Center(
                           child: CommonText(
-                            text: "Book Appointment",
+                            text: "Make Appointment",
                             fontColor: AppColors.white,
                             fontSize: AppFontSize.twenty,
                             fontWeight: FontWeight.bold,
@@ -300,6 +271,35 @@ class DoctorsDetail extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Column buildCount({required count, required department, required icon}) {
+    return Column(
+      children: [
+        Container(
+          height: 50,
+          width: 50,
+          margin: const EdgeInsets.only(top: 20),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.white.withOpacity(.2),
+          ),
+          child: Icon(
+            icon,
+            color: AppColors.white,
+          ),
+        ),
+        CommonText(
+          text: count,
+          fontColor: AppColors.white,
+        ),
+        CommonText(
+          text: department,
+          fontColor: AppColors.white,
+          fontSize: AppFontSize.twelve,
+        ),
+      ],
     );
   }
 }
