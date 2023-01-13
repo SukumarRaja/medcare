@@ -1,15 +1,20 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../controller/appointment.dart';
+import '../../../controller/doctor.dart';
 import '../../themes/app_colors.dart';
+import '../../themes/app_font_size.dart';
 import '../../widgets/appointment/appointments_card.dart';
-import '../../widgets/appointment/history_card.dart';
 import '../../widgets/common_popup.dart';
+import '../../widgets/common_text.dart';
+import '../../widgets/doctors/live_doctors_card.dart';
+import '../doctor/detail.dart';
 import 'detail.dart';
 
-class AppointmentsHistory extends StatelessWidget {
-  const AppointmentsHistory({Key? key}) : super(key: key);
+class BookNewAppointments extends StatelessWidget {
+  const BookNewAppointments({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +58,27 @@ class AppointmentsHistory extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: GestureDetector(
-                        onTap: () {
-                          commonHistoryPopupMenu(context);
+                        onTap: (){
+                          commonPopupMenu(context);
                         },
                         child: Icon(Icons.menu)),
                   ),
                 ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(8),
+              child: DatePicker(
+                DateTime.now(),
+                controller: AppointmentController.to.datePickerController,
+                initialSelectedDate: DateTime.now(),
+                // selectedTextColor: Colors.red,
+                onDateChange: (date) {
+                  // New date selected
+                  // setState(() {
+                  //   _selectedValue = date;
+                  // });
+                },
               ),
             ),
             ListView.builder(
@@ -67,17 +87,20 @@ class AppointmentsHistory extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, int index) {
-                  return AppointmentsHistoryCard(
+                  return LiveDoctorsCard(
                     doctorName: "Srena Gome",
-                    specialist: "Stomach Pain",
-                    date: "10/01/2023",
-                    time: "01:20 am",
-                    status: "Booked",
-                    slots: "5",
+                    specialist: "Medicine Specialist",
+                    experience: "10",
+                    patients: "1.20",
+                    isAvailable: index == 0
+                        ? DoctorController.to.isDoctorAvailable == false
+                        : index == 1
+                        ? DoctorController.to.isDoctorAvailable == false
+                        : false,
                     image:
-                        "https://www.dragarwal.com/wp-content/uploads/2022/02/eye-doctor-popup.png",
+                    "https://www.dragarwal.com/wp-content/uploads/2022/02/eye-doctor-popup.png",
                     onPressed: () {
-                      Get.to(() => AppointmentDetail());
+                      Get.to(() => DoctorsDetail());
                     },
                   );
                 }),

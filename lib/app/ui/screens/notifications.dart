@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../themes/app_colors.dart';
+import '../themes/app_font_size.dart';
+import '../widgets/common_popup.dart';
+import '../widgets/common_text.dart';
 import '../widgets/notification_card.dart';
 
 class Notifications extends StatelessWidget {
@@ -14,11 +19,29 @@ class Notifications extends StatelessWidget {
           children: [
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
-                  Icon(Icons.menu),
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        color: AppColors.black,
+                      )),
+                  const Spacer(),
+                  const CommonText(
+                    text: "Notifications",
+                    fontColor: AppColors.black,
+                    fontSize: AppFontSize.twenty,
+                  ),
+                  const Spacer(),
+                  GestureDetector(
+                      onTap: () {
+                        notificationPopupMenu(context);
+                      },
+                      child: Icon(Icons.menu)),
                 ],
               ),
             ),

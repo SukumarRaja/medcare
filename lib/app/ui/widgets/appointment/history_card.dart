@@ -118,7 +118,7 @@ class AppointmentsHistoryCard extends StatelessWidget {
                         Positioned(
                             right: 2,
                             child: CommonText(
-                              text: "2 days to go",
+                              text: "2 days ago",
                               fontColor: AppColors.black.withOpacity(.3),
                               fontSize: AppFontSize.twelve,
                             ))

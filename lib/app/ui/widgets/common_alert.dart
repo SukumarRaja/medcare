@@ -12,11 +12,11 @@ commonAlertDialog(BuildContext context,
       height: 30,
       width: 60,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), color: Colors.red),
+          borderRadius: BorderRadius.circular(8), color: Colors.red),
       child: const Center(
         child: Text(
           "Cancel",
-          style: TextStyle(color: AppColors.black),
+          style: TextStyle(color: AppColors.white),
         ),
       ),
     ),
@@ -33,11 +33,11 @@ commonAlertDialog(BuildContext context,
       height: 30,
       width: 60,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), color: Colors.green),
+          borderRadius: BorderRadius.circular(8), color: Colors.green),
       child: const Center(
         child: Text(
           "Confirm",
-          style: TextStyle(color: AppColors.black),
+          style: TextStyle(color: AppColors.white),
         ),
       ),
     ),

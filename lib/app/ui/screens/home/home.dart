@@ -10,6 +10,7 @@ import '../../widgets/home/doctors_card.dart';
 import '../../widgets/home/main_category.dart';
 import '../doctor/all_doctors.dart';
 import '../doctor/detail.dart';
+import '../notifications.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -49,7 +50,13 @@ class Home extends StatelessWidget {
                         onTap: () {
                           Get.to(() => const AllDoctors());
                         },
-                        child: const Icon(Icons.search))
+                        child: const Icon(Icons.search)),
+                    SizedBox(width: media.width*0.02),
+                    GestureDetector(
+                        onTap: () {
+                          Get.to(() => const Notifications());
+                        },
+                        child: const Icon(Icons.notifications))
                   ],
                 ),
               ),
