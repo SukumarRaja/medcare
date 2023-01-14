@@ -5,6 +5,8 @@ import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
 import '../../widgets/common_alert.dart';
 import '../../widgets/common_text.dart';
+import '../report.dart';
+import 'update.dart';
 import 'view.dart';
 
 class Profile extends StatelessWidget {
@@ -71,20 +73,24 @@ class Profile extends StatelessWidget {
                     text: "Profile",
                     suffixIcon: Icons.arrow_forward_ios_outlined,
                     onPressed: () {
-                  Get.to(()=>ProfileView());
-                    }),
+                  Get.to(() => const ProfileView());
+                }),
                 SizedBox(height: media.width * 0.03),
                 buildTitle(media,
                     prefixIcon: Icons.update,
                     text: "Update",
                     suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
+                    onPressed: () {
+                  Get.to(() => const ProfileUpdate());
+                }),
                 SizedBox(height: media.width * 0.03),
                 buildTitle(media,
                     prefixIcon: Icons.report_gmailerrorred,
                     text: "Reports",
                     suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
+                    onPressed: () {
+                  Get.to(() => const Reports());
+                }),
                 SizedBox(height: media.width * 0.03),
                 CommonText(
                   text: "SETTINGS",
