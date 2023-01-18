@@ -10,4 +10,12 @@ class ReportController extends GetxController {
   set wightLevel(value) {
     _wightLevel.value = value;
   }
+
+  final _selectReportTypeIndex = 0.obs;
+
+  get selectReportTypeIndex => _selectReportTypeIndex.value;
+
+  set selectReportTypeIndex(value) {
+    _selectReportTypeIndex.value = value;
+  }
 }

@@ -5,6 +5,7 @@ import '../../controller/report.dart';
 import '../themes/app_colors.dart';
 import '../themes/app_font_size.dart';
 import '../widgets/common_text.dart';
+import '../widgets/report_card.dart';
 
 class Reports extends StatelessWidget {
   const Reports({Key? key}) : super(key: key);
@@ -259,128 +260,83 @@ class Reports extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  Column(
-                    children: [
-                      const CommonText(text: "All"),
-                      SizedBox(height: media.height * 0.003),
-                      Container(
-                        height: 3,
-                        width: 25,
-                        decoration:
-                            const BoxDecoration(color: AppColors.primary),
-                      )
-                    ],
+                  GestureDetector(
+                    onTap: () {
+                      ReportController.to.selectReportTypeIndex = 0;
+                    },
+                    child: Column(
+                      children: [
+                        const CommonText(text: "All"),
+                        SizedBox(height: media.height * 0.003),
+                        Obx(() => Container(
+                              height: 3,
+                              width: 25,
+                              decoration: BoxDecoration(
+                                  color: ReportController
+                                              .to.selectReportTypeIndex ==
+                                          0
+                                      ? AppColors.primary
+                                      : Colors.transparent),
+                            ))
+                      ],
+                    ),
                   ),
                   const Spacer(),
                   Stack(
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 1.0, right: 2.0),
-                        child: Column(
-                          children: [
-                            const CommonText(text: "Latest"),
-                            SizedBox(height: media.height * 0.003),
-                            Container(
-                              height: 3,
-                              width: 45,
-                              decoration:
-                                  const BoxDecoration(color: AppColors.primary),
-                            )
-                          ],
+                        child: GestureDetector(
+                          onTap: () {
+                            ReportController.to.selectReportTypeIndex = 1;
+                          },
+                          child: Column(
+                            children: [
+                              const CommonText(text: "Latest"),
+                              SizedBox(height: media.height * 0.003),
+                              Obx(() => Container(
+                                    height: 3,
+                                    width: 45,
+                                    decoration: BoxDecoration(
+                                        color: ReportController
+                                                    .to.selectReportTypeIndex ==
+                                                1
+                                            ? AppColors.primary
+                                            : Colors.transparent),
+                                  ))
+                            ],
+                          ),
                         ),
                       ),
                       Positioned(
                         right: 0,
-                        child: Container(
-                          height: 7,
-                          width: 7,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle, color: AppColors.primary),
-                        ),
+                        child: Obx(() => Container(
+                              height: 7,
+                              width: 7,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: ReportController
+                                              .to.selectReportTypeIndex ==
+                                          1
+                                      ? AppColors.primary
+                                      : Colors.transparent),
+                            )),
                       )
                     ],
                   ),
                   const Spacer(),
                 ],
               ),
-
-              Container(
-                // height: media.width * 0.4,
-                margin: const EdgeInsets.only(top: 5, right: 10, left: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: AppColors.red.withOpacity(.2),
-                  boxShadow: [
-                    BoxShadow(
-                        color: AppColors.grey.withOpacity(.2),
-                        blurRadius: 1,
-                        spreadRadius: 1,
-                        offset: const Offset(0.1, 0.3))
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 50,
-                        width: 50,
-                        color: AppColors.primary,
-                        child: const Icon(Icons.folder),
-                      ),
-
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: media.height * 0.02),
-                          const CommonText(
-                            text: "Heart Rate",
-                            fontColor: AppColors.black,
-                            fontSize: AppFontSize.twenty,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          SizedBox(height: media.height * 0.01),
-                          const CommonText(
-                            text: "last measurement",
-                            fontColor: AppColors.black,
-                            fontSize: AppFontSize.sixteen,
-                          ),
-                          SizedBox(height: media.height * 0.01),
-                          Row(
-                            children: const [
-                              CommonText(
-                                text: "${97}",
-                                fontColor: AppColors.black,
-                                fontSize: AppFontSize.twenty,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 8.0),
-                                child: CommonText(
-                                  text: " bpm",
-                                  fontColor: AppColors.black,
-                                  fontSize: AppFontSize.sixteen,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: media.height * 0.04),
-                        ],
-                      ),
-                      SizedBox(width: media.width * 0.06),
-                      SvgPicture.asset(
-                        "assets/svgs/heart.svg",
-                        color: AppColors.white,
-                        width: media.width,
-                        height: media.height * 0.18,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-
-
+              SizedBox(height: media.height * 0.02),
+              Obx(() => ListView.builder(
+                  shrinkWrap: true,
+                  itemCount:
+                      ReportController.to.selectReportTypeIndex == 1 ? 3 : 5,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, int index) {
+                    return const ReportCard();
+                  })),
+              SizedBox(height: media.height * 0.02),
             ],
           ),
         ),
