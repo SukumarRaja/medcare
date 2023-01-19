@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../utility/utility.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
 import '../../widgets/common_alert.dart';
 import '../../widgets/common_text.dart';
+import '../change_passwrod.dart';
+import '../refer_friend.dart';
 import '../report.dart';
 import 'update.dart';
 import 'view.dart';
@@ -102,31 +106,33 @@ class Profile extends StatelessWidget {
                     prefixIcon: Icons.password,
                     text: "Change Password",
                     suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
-                SizedBox(height: media.width * 0.02),
-                buildTitle(media,
-                    prefixIcon: Icons.language,
-                    text: "Language",
-                    suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
-                SizedBox(height: media.width * 0.02),
-                buildTitle(media,
-                    prefixIcon: Icons.emergency,
-                    text: "Add Emergency",
-                    suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
-                SizedBox(height: media.width * 0.02),
-                buildTitle(media,
-                    prefixIcon: Icons.monitor_weight_outlined,
-                    text: "BMI",
-                    suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
-                SizedBox(height: media.width * 0.02),
-                buildTitle(media,
-                    prefixIcon: Icons.settings,
-                    text: "Settings",
-                    suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
+                    onPressed: () {
+                  Get.to(() => const ChangePassword());
+                }),
+                // SizedBox(height: media.width * 0.02),
+                // buildTitle(media,
+                //     prefixIcon: Icons.language,
+                //     text: "Language",
+                //     suffixIcon: Icons.arrow_forward_ios_outlined,
+                //     onPressed: () {}),
+                // SizedBox(height: media.width * 0.02),
+                // buildTitle(media,
+                //     prefixIcon: Icons.emergency,
+                //     text: "Add Emergency",
+                //     suffixIcon: Icons.arrow_forward_ios_outlined,
+                //     onPressed: () {}),
+                // SizedBox(height: media.width * 0.02),
+                // buildTitle(media,
+                //     prefixIcon: Icons.monitor_weight_outlined,
+                //     text: "BMI",
+                //     suffixIcon: Icons.arrow_forward_ios_outlined,
+                //     onPressed: () {}),
+                // SizedBox(height: media.width * 0.02),
+                // buildTitle(media,
+                //     prefixIcon: Icons.settings,
+                //     text: "Settings",
+                //     suffixIcon: Icons.arrow_forward_ios_outlined,
+                //     onPressed: () {}),
                 SizedBox(height: media.width * 0.03),
                 CommonText(
                   text: "ABOUT",
@@ -138,25 +144,36 @@ class Profile extends StatelessWidget {
                     prefixIcon: Icons.info_outline,
                     text: "About us",
                     suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
+                    onPressed: () {
+                  openBrowser(
+                      url: "https://pub.dev/packages/url_launcher/example");
+                }),
                 SizedBox(height: media.width * 0.02),
                 buildTitle(media,
                     prefixIcon: Icons.abc,
                     text: "Terms & Conditions",
                     suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
+                    onPressed: () {
+                  openBrowser(
+                      url: "https://pub.dev/packages/url_launcher/example");
+                }),
                 SizedBox(height: media.width * 0.02),
                 buildTitle(media,
                     prefixIcon: Icons.connect_without_contact,
                     text: "Contact us",
                     suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
+                    onPressed: () {
+                  openBrowser(
+                      url: "https://pub.dev/packages/url_launcher/example");
+                }),
                 SizedBox(height: media.width * 0.02),
                 buildTitle(media,
                     prefixIcon: Icons.share,
                     text: "Refer Friend",
                     suffixIcon: Icons.arrow_forward_ios_outlined,
-                    onPressed: () {}),
+                    onPressed: () {
+                  Get.to(() => const ReferFriend());
+                }),
                 SizedBox(height: media.width * 0.08),
                 GestureDetector(
                   onTap: () {
