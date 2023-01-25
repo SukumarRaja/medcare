@@ -1,11 +1,10 @@
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../controller/appointment.dart';
 import '../../themes/app_colors.dart';
-import '../../widgets/appointment/appointments_card.dart';
+import '../../themes/app_font_size.dart';
 import '../../widgets/appointment/history_card.dart';
 import '../../widgets/common_popup.dart';
+import '../../widgets/common_text.dart';
 import 'detail.dart';
 
 class AppointmentsHistory extends StatelessWidget {
@@ -19,9 +18,29 @@ class AppointmentsHistory extends StatelessWidget {
           child: SingleChildScrollView(
         child: Column(
           children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+              child: Row(
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: const Icon(Icons.arrow_back_ios)),
+                  const Spacer(),
+                  const CommonText(
+                    text: "History",
+                    fontColor: AppColors.black,
+                    fontSize: AppFontSize.twenty,
+                  ),
+                  const Spacer()
+                ],
+              ),
+            ),
             Container(
               height: 50,
-              margin: const EdgeInsets.only(top: 20, right: 10, left: 10),
+              margin: const EdgeInsets.only(top: 5, right: 10, left: 10),
               width: media.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
@@ -56,7 +75,7 @@ class AppointmentsHistory extends StatelessWidget {
                         onTap: () {
                           commonHistoryPopupMenu(context);
                         },
-                        child: Icon(Icons.menu)),
+                        child: const Icon(Icons.menu)),
                   ),
                 ],
               ),
@@ -77,7 +96,7 @@ class AppointmentsHistory extends StatelessWidget {
                     image:
                         "https://www.dragarwal.com/wp-content/uploads/2022/02/eye-doctor-popup.png",
                     onPressed: () {
-                      Get.to(() => AppointmentDetail());
+                      Get.to(() => const AppointmentDetail());
                     },
                   );
                 }),

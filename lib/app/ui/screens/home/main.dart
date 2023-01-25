@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 import '../../../controller/main.dart';
 import '../../themes/app_colors.dart';
 import '../appointment/appointments.dart';
-import '../appointment/history.dart';
 import '../appointment/new bookings.dart';
-import '../notifications.dart';
 import '../profile/profile.dart';
+import '../room/booking.dart';
 import 'home.dart';
 
 class HomeMain extends StatelessWidget {
@@ -16,7 +15,7 @@ class HomeMain extends StatelessWidget {
     const BookNewAppointments(),
     const Home(),
     const Appointments(),
-    const AppointmentsHistory()
+    const RoomBooking()
   ];
 
   @override
@@ -45,7 +44,7 @@ class HomeMain extends StatelessWidget {
             BottomNavigationBarItem(
                 icon: Icon(Icons.timer), label: "Appointments"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.history), label: "History"),
+                icon: Icon(Icons.room_preferences), label: "Room Booking"),
           ],
         ),
       ),

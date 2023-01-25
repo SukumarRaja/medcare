@@ -7,7 +7,10 @@ import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
 import '../../widgets/common_alert.dart';
 import '../../widgets/common_text.dart';
+import '../appointment/history.dart';
+import '../bmi.dart';
 import '../change_passwrod.dart';
+import '../pharmacy_on_phone.dart';
 import '../refer_friend.dart';
 import '../report.dart';
 import 'update.dart';
@@ -96,6 +99,45 @@ class Profile extends StatelessWidget {
                   Get.to(() => const Reports());
                 }),
                 SizedBox(height: media.width * 0.03),
+                CommonText(
+                  text: "OTHERS",
+                  fontColor: AppColors.black.withOpacity(.3),
+                  fontSize: AppFontSize.sixteen,
+                ),
+                SizedBox(height: media.width * 0.03),
+                buildTitle(media,
+                    prefixIcon: Icons.monitor_weight_outlined,
+                    text: "BMI",
+                    suffixIcon: Icons.arrow_forward_ios_outlined,
+                    onPressed: () {
+                  Get.to(() => const BmiCalculator());
+                }),
+                SizedBox(height: media.width * 0.03),
+                buildTitle(media,
+                    prefixIcon: Icons.history,
+                    text: "Appointment History",
+                    suffixIcon: Icons.arrow_forward_ios_outlined,
+                    onPressed: () {
+                  Get.to(() => const AppointmentsHistory());
+                }),
+                SizedBox(height: media.width * 0.03),
+                buildTitle(media,
+                    prefixIcon: Icons.local_pharmacy_rounded,
+                    text: "Pharmacy on phone",
+                    suffixIcon: Icons.arrow_forward_ios_outlined,
+                    onPressed: () {
+                  Get.to(() => const PharmacyOnPhone());
+                }),
+                SizedBox(height: media.width * 0.03),
+                buildTitle(media,
+                    prefixIcon: Icons.report_gmailerrorred,
+                    text: "Reports",
+                    suffixIcon: Icons.arrow_forward_ios_outlined,
+                    onPressed: () {
+                  Get.to(() => const Reports());
+                }),
+                SizedBox(height: media.width * 0.03),
+
                 CommonText(
                   text: "SETTINGS",
                   fontColor: AppColors.black.withOpacity(.3),
