@@ -10,6 +10,7 @@ import '../../widgets/common_text.dart';
 import '../appointment/history.dart';
 import '../bmi.dart';
 import '../change_passwrod.dart';
+import '../family/members.dart';
 import '../pharmacy_on_phone.dart';
 import '../refer_friend.dart';
 import '../report.dart';
@@ -130,11 +131,11 @@ class Profile extends StatelessWidget {
                 }),
                 SizedBox(height: media.width * 0.03),
                 buildTitle(media,
-                    prefixIcon: Icons.report_gmailerrorred,
-                    text: "Reports",
+                    prefixIcon: Icons.group,
+                    text: "Family Members",
                     suffixIcon: Icons.arrow_forward_ios_outlined,
                     onPressed: () {
-                  Get.to(() => const Reports());
+                  Get.to(() => const FamilyMembers());
                 }),
                 SizedBox(height: media.width * 0.03),
 
