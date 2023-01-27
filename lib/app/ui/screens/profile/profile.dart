@@ -10,7 +10,9 @@ import '../../widgets/common_text.dart';
 import '../appointment/history.dart';
 import '../bmi.dart';
 import '../change_passwrod.dart';
+import '../chat_bot.dart';
 import '../family/members.dart';
+import '../faq.dart';
 import '../pharmacy_on_phone.dart';
 import '../refer_friend.dart';
 import '../report.dart';
@@ -152,18 +154,22 @@ class Profile extends StatelessWidget {
                     onPressed: () {
                   Get.to(() => const ChangePassword());
                 }),
-                // SizedBox(height: media.width * 0.02),
-                // buildTitle(media,
-                //     prefixIcon: Icons.language,
-                //     text: "Language",
-                //     suffixIcon: Icons.arrow_forward_ios_outlined,
-                //     onPressed: () {}),
-                // SizedBox(height: media.width * 0.02),
-                // buildTitle(media,
-                //     prefixIcon: Icons.emergency,
-                //     text: "Add Emergency",
-                //     suffixIcon: Icons.arrow_forward_ios_outlined,
-                //     onPressed: () {}),
+                SizedBox(height: media.width * 0.02),
+                buildTitle(media,
+                    prefixIcon: Icons.question_answer,
+                    text: "FAQ",
+                    suffixIcon: Icons.arrow_forward_ios_outlined,
+                    onPressed: () {
+                  Get.to(() => const Faq());
+                }),
+                SizedBox(height: media.width * 0.02),
+                buildTitle(media,
+                    prefixIcon: Icons.chat_bubble,
+                    text: "Chat bot",
+                    suffixIcon: Icons.arrow_forward_ios_outlined,
+                    onPressed: () {
+                  Get.to(() => const ChatBot());
+                }),
                 // SizedBox(height: media.width * 0.02),
                 // buildTitle(media,
                 //     prefixIcon: Icons.monitor_weight_outlined,
