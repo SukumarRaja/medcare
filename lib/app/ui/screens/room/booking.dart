@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../controller/room.dart';
 import '../../themes/app_colors.dart';
-import '../../widgets/common_text.dart';
-import '../../widgets/room/booking_card.dart';
-import '../../widgets/room/recommendation.dart';
+import '../../widgets/room/new_booking_card.dart';
+import 'detail.dart';
 
 class RoomBooking extends StatelessWidget {
   const RoomBooking({Key? key}) : super(key: key);
@@ -13,19 +10,19 @@ class RoomBooking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
-    return Container(
-      color: AppColors.white,
-      child: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Container(
+    return SafeArea(
+      child: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  flex: 5,
+                  child: Container(
                     height: 50,
-                    width: media.width / 1.18,
-                    margin: const EdgeInsets.all(10.0),
+                    margin: const EdgeInsets.only(
+                        right: 15.0, left: 15, top: 10, bottom: 10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.0),
                         color: AppColors.white,
@@ -50,211 +47,93 @@ class RoomBooking extends StatelessWidget {
                       ),
                     ),
                   ),
-                  GestureDetector(onTap: () {}, child: const Icon(Icons.menu))
-                ],
-              ),
-              GridView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                padding: const EdgeInsets.only(
-                    left: 10, right: 10, top: 10, bottom: 0),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 5.0,
-                    mainAxisSpacing: 10.0,
-                    childAspectRatio: 3 / 1),
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return RoomRecommendationContainer(
-                    text: index == 0
-                        ? "Air Conditioned"
-                        : index == 1
-                            ? "Deluxe Double"
-                            : index == 2
-                                ? "Single"
-                                : "",
-                    index: index,
-                    onPressed: () {
-                      RoomBookingController.to.recommendationButtonIndex =
-                          index;
-                      if (index == 0) {
-                        print("Index value in 0");
-                        RoomBookingController.to.recommendationButtonIndex = 0;
-                      } else if (index == 1) {
-                        print("Index value in 1");
-                        RoomBookingController.to.recommendationButtonIndex = 1;
-                      } else if (index == 2) {
-                        print("Index value in 2");
-                        RoomBookingController.to.recommendationButtonIndex = 2;
-                      }
-                    },
-                  );
-                },
-              ),
-              Obx(() => roomRecommendationButton()),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
-                  CommonText(
-                    text: "See All",
-                    fontColor: AppColors.primary,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  SizedBox(width: 20),
-                ],
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                child: CommonText(
-                  text: "Recently Booked",
-                  fontColor: AppColors.primary,
-                  fontWeight: FontWeight.bold,
                 ),
-              ),
-              Obx(() => recentlyBooked()),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
-                  CommonText(
-                    text: "See All",
-                    fontColor: AppColors.primary,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  SizedBox(width: 20),
-                ],
-              ),
-            ],
-          ),
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                          margin: const EdgeInsets.only(right: 15.0),
+                          height: 50,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                              color: AppColors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.grey.withOpacity(.4),
+                                  spreadRadius: 1,
+                                  blurRadius: 2,
+                                  // offset: Offset(0.2, 0.6)
+                                )
+                              ]),
+                          child: const Icon(Icons.menu))),
+                )
+              ],
+            ),
+            // GridView.builder(
+            //   physics: const NeverScrollableScrollPhysics(),
+            //   shrinkWrap: true,
+            //   padding: const EdgeInsets.only(
+            //       left: 10, right: 10, top: 10, bottom: 0),
+            //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //       crossAxisCount: 3,
+            //       crossAxisSpacing: 5.0,
+            //       mainAxisSpacing: 10.0,
+            //       childAspectRatio: 3 / 1),
+            //   itemCount: 3,
+            //   itemBuilder: (context, index) {
+            //     return RoomRecommendationContainer(
+            //       text: index == 0
+            //           ? "Air Conditioned"
+            //           : index == 1
+            //               ? "Deluxe Double"
+            //               : index == 2
+            //                   ? "Single"
+            //                   : "",
+            //       index: index,
+            //       onPressed: () {
+            //         RoomBookingController.to.recommendationButtonIndex =
+            //             index;
+            //         if (index == 0) {
+            //           print("Index value in 0");
+            //           RoomBookingController.to.recommendationButtonIndex = 0;
+            //         } else if (index == 1) {
+            //           print("Index value in 1");
+            //           RoomBookingController.to.recommendationButtonIndex = 1;
+            //         } else if (index == 2) {
+            //           print("Index value in 2");
+            //           RoomBookingController.to.recommendationButtonIndex = 2;
+            //         }
+            //       },
+            //     );
+            //   },
+            // ),
+            SizedBox(
+              height: media.height * 0.8,
+              child: ListView.builder(
+                  itemCount: 5,
+                  shrinkWrap: true,
+                  physics: const ScrollPhysics(),
+                  itemBuilder: (context, int index) {
+                    return RoomBookingCardNew(
+                      name: "Executive Suite",
+                      size: "32",
+                      amount: "250",
+                      image:
+                          "https://insights.ehotelier.com/wp-content/uploads/sites/6/2020/01/hotel-room.jpg",
+                      chooseButton: () {},
+                      onPressed: () {
+                        Get.to(() => const RoomDetail());
+                      },
+                    );
+                  }),
+            ),
+            SizedBox(
+              height: media.height * 0.10,
+            )
+          ],
         ),
       ),
-    );
-  }
-}
-
-roomRecommendationButton() {
-  if (RoomBookingController.to.recommendationButtonIndex == 0) {
-    return SizedBox(
-      height: Get.height * 0.3,
-      child: ListView.builder(
-          itemCount: 3,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            return RoomBookingCard(
-              roomName: "Delux",
-              roomNumber: "105",
-              amount: "500",
-              imageUrl: const DecorationImage(
-                  fit: BoxFit.fill,
-                  colorFilter: ColorFilter.srgbToLinearGamma(),
-                  image: NetworkImage(
-                      "https://www.sriramakrishnahospital.com/wp-content/uploads/2020/09/4-1.png")),
-              onPressed: () {},
-            );
-          }),
-    );
-  } else if (RoomBookingController.to.recommendationButtonIndex == 1) {
-    return SizedBox(
-      height: Get.height * 0.3,
-      child: ListView.builder(
-          itemCount: 5,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            return RoomBookingCard(
-              roomName: "Super Delux",
-              roomNumber: "9865",
-              amount: "1500",
-              imageUrl: const DecorationImage(
-                  fit: BoxFit.fill,
-                  colorFilter: ColorFilter.srgbToLinearGamma(),
-                  image: NetworkImage(
-                      "https://www.sriramakrishnahospital.com/wp-content/uploads/2020/09/4-1.png")),
-              onPressed: () {},
-            );
-          }),
-    );
-  } else if (RoomBookingController.to.recommendationButtonIndex == 2) {
-    return SizedBox(
-      height: Get.height * 0.3,
-      child: ListView.builder(
-          itemCount: 5,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            return RoomBookingCard(
-              roomName: "Delux",
-              roomNumber: "105",
-              amount: "500",
-              imageUrl: const DecorationImage(
-                  fit: BoxFit.fill,
-                  colorFilter: ColorFilter.srgbToLinearGamma(),
-                  image: NetworkImage(
-                      "https://www.sriramakrishnahospital.com/wp-content/uploads/2020/09/4-1.png")),
-              onPressed: () {},
-            );
-          }),
-    );
-  }
-}
-
-recentlyBooked() {
-  if (RoomBookingController.to.recommendationButtonIndex == 0) {
-    return SizedBox(
-      height: Get.height * 0.3,
-      child: ListView.builder(
-          itemCount: 5,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            return RoomBookingCard(
-              roomName: "Delux",
-              roomNumber: "105",
-              amount: "500",
-              imageUrl: const DecorationImage(
-                  fit: BoxFit.fill,
-                  colorFilter: ColorFilter.srgbToLinearGamma(),
-                  image: NetworkImage(
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmDw5hv_Dn-LB1ElLrVS-Hi4jGvsGp2s-PlA&usqp=CAU")),
-              onPressed: () {},
-            );
-          }),
-    );
-  } else if (RoomBookingController.to.recommendationButtonIndex == 1) {
-    return SizedBox(
-      height: Get.height * 0.3,
-      child: ListView.builder(
-          itemCount: 5,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            return RoomBookingCard(
-              roomName: "Delux",
-              roomNumber: "105",
-              amount: "500",
-              imageUrl: const DecorationImage(
-                  fit: BoxFit.fill,
-                  colorFilter: ColorFilter.srgbToLinearGamma(),
-                  image: NetworkImage(
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmDw5hv_Dn-LB1ElLrVS-Hi4jGvsGp2s-PlA&usqp=CAU")),
-              onPressed: () {},
-            );
-          }),
-    );
-  } else if (RoomBookingController.to.recommendationButtonIndex == 2) {
-    return SizedBox(
-      height: Get.height * 0.3,
-      child: ListView.builder(
-          itemCount: 5,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            return RoomBookingCard(
-              roomName: "Delux",
-              roomNumber: "105",
-              amount: "500",
-              imageUrl: const DecorationImage(
-                  fit: BoxFit.fill,
-                  colorFilter: ColorFilter.srgbToLinearGamma(),
-                  image: NetworkImage(
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmDw5hv_Dn-LB1ElLrVS-Hi4jGvsGp2s-PlA&usqp=CAU")),
-              onPressed: () {},
-            );
-          }),
     );
   }
 }
