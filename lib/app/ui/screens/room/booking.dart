@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../themes/app_colors.dart';
 import '../../widgets/room/new_booking_card.dart';
+import 'check_out.dart';
 import 'detail.dart';
 
 class RoomBooking extends StatelessWidget {
@@ -119,11 +120,18 @@ class RoomBooking extends StatelessWidget {
                       name: "Executive Suite",
                       size: "32",
                       amount: "250",
+                      available: index == 0
+                          ? "Available"
+                          : index == 1
+                              ? "Available"
+                              : "Not Available",
                       image:
                           "https://insights.ehotelier.com/wp-content/uploads/sites/6/2020/01/hotel-room.jpg",
-                      chooseButton: () {},
+                      chooseButton: () {
+                        Get.to(() => const RoomBookingCheckOut());
+                      },
                       onPressed: () {
-                        Get.to(() =>  RoomDetail());
+                        Get.to(() => const RoomDetail());
                       },
                     );
                   }),

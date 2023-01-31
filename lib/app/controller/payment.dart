@@ -10,4 +10,13 @@ class PaymentController extends GetxController {
   set paymentMethodSelectIndex(value) {
     _paymentMethodSelectIndex.value = value;
   }
+
+  final _roomBookingPaymentMethodSelectIndex = 6.obs;
+
+  get roomBookingPaymentMethodSelectIndex =>
+      _roomBookingPaymentMethodSelectIndex.value;
+
+  set roomBookingPaymentMethodSelectIndex(value) {
+    _roomBookingPaymentMethodSelectIndex.value = value;
+  }
 }

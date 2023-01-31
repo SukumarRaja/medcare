@@ -13,10 +13,12 @@ class RoomBookingCardNew extends StatelessWidget {
       required this.image,
       required this.amount,
       required this.chooseButton,
-      required this.onPressed})
+      required this.onPressed,
+      required this.available})
       : super(key: key);
 
   final String name;
+  final String available;
   final String size;
   final String image;
   final String amount;
@@ -42,6 +44,7 @@ class RoomBookingCardNew extends StatelessWidget {
                   spreadRadius: 1)
             ]),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -64,6 +67,13 @@ class RoomBookingCardNew extends StatelessWidget {
                         const CommonText(
                             text: "Non Refundable",
                             fontSize: AppFontSize.fourteen),
+                        CommonText(
+                          text: available,
+                          fontSize: AppFontSize.fourteen,
+                          fontColor: available == "Available"
+                              ? AppColors.green
+                              : AppColors.red,
+                        ),
                       ],
                     ),
                   ),
@@ -203,6 +213,17 @@ class RoomBookingCardNew extends StatelessWidget {
                 child: DottedDivider(
                   color: AppColors.black.withOpacity(.2),
                 )),
+            available == "Not Available"
+                ? const Padding(
+                    padding: EdgeInsets.only(
+                      left: 15.0,
+                    ),
+                    child: CommonText(
+                      text: "Next Available : 12/02/2023",
+                      fontSize: AppFontSize.twelve,
+                    ),
+                  )
+                : const SizedBox(),
             Padding(
               padding: const EdgeInsets.only(
                   right: 15.0, left: 15.0, top: 5, bottom: 15),

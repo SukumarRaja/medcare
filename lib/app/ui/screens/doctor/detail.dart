@@ -224,7 +224,7 @@ class DoctorsDetail extends StatelessWidget {
                                       ],
                                     );
                                   }),
-                              SizedBox(height: media.height * 0.05),
+                              SizedBox(height: media.height * 0.07),
                             ],
                           ),
                         ),
@@ -246,6 +246,7 @@ class DoctorsDetail extends StatelessWidget {
                     child: Center(
                       child: Container(
                         width: MediaQuery.of(context).size.width - 40,
+                        margin: EdgeInsets.all(10.0),
                         height: 50,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),

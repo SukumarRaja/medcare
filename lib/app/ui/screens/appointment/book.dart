@@ -196,7 +196,7 @@ class BookAppointment extends StatelessWidget {
                         ),
                         AfternoonSlots(),
                         SizedBox(
-                          height: media.width * 0.15,
+                          height: media.width * 0.18,
                         )
                       ],
                     ),
@@ -216,6 +216,7 @@ class BookAppointment extends StatelessWidget {
                     child: Center(
                       child: Container(
                         width: MediaQuery.of(context).size.width - 40,
+                        margin: EdgeInsets.all(10.0),
                         height: 50,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),

@@ -268,7 +268,9 @@ class RoomDetail extends StatelessWidget {
                 top: media.height * 0.05,
                 left: media.width * 0.04,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.back();
+                  },
                   child: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
