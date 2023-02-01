@@ -316,7 +316,7 @@ class RoomDetail extends StatelessWidget {
                 left: media.width * 0.04,
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => const RoomBookingCheckOut());
+                    Get.to(() =>  const RoomBookingCheckOut(fromMain: false,));
                   },
                   child: Container(
                       padding: const EdgeInsets.all(15),

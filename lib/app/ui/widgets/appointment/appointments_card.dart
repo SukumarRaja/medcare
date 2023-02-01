@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_borders/gradient_borders.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
 import '../common_text.dart';
@@ -35,6 +36,11 @@ class AppointmentsCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           color: AppColors.white,
+          border: const GradientBoxBorder(
+            gradient: LinearGradient(
+                colors: [AppColors.primary, AppColors.buttonGradient]),
+            width: 1,
+          ),
           boxShadow: [
             BoxShadow(
                 color: AppColors.grey.withOpacity(.2),

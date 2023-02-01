@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_borders/gradient_borders.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
 import '../common_text.dart';
@@ -31,6 +32,11 @@ class DoctorsCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           color: AppColors.white,
+          // border: const GradientBoxBorder(
+          //   gradient: LinearGradient(
+          //       colors: [AppColors.primary, AppColors.buttonGradient]),
+          //   width: 0,
+          // ),
           boxShadow: [
             BoxShadow(
                 color: AppColors.grey.withOpacity(.2),
@@ -55,20 +61,20 @@ class DoctorsCard extends StatelessWidget {
                       fontSize: AppFontSize.twelve,
                       fontColor: AppColors.black.withOpacity(.4),
                     ),
-                    SizedBox(
-                      height: media.height * 0.01,
-                      child: ListView.builder(
-                          itemCount: 5,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, int index) {
-                            return const Icon(
-                              Icons.star,
-                              color: AppColors.primary,
-                              size: 14,
-                            );
-                          }),
-                    ),
+                    // SizedBox(
+                    //   height: media.height * 0.01,
+                    //   child: ListView.builder(
+                    //       itemCount: 5,
+                    //       shrinkWrap: true,
+                    //       scrollDirection: Axis.horizontal,
+                    //       itemBuilder: (context, int index) {
+                    //         return const Icon(
+                    //           Icons.star,
+                    //           color: AppColors.primary,
+                    //           size: 14,
+                    //         );
+                    //       }),
+                    // ),
                     SizedBox(height: media.height * 0.02),
                     CommonText(
                       text: "Experience",

@@ -128,7 +128,9 @@ class RoomBooking extends StatelessWidget {
                       image:
                           "https://insights.ehotelier.com/wp-content/uploads/sites/6/2020/01/hotel-room.jpg",
                       chooseButton: () {
-                        Get.to(() => const RoomBookingCheckOut());
+                        Get.to(() => const RoomBookingCheckOut(
+                              fromMain: true,
+                            ));
                       },
                       onPressed: () {
                         Get.to(() => const RoomDetail());

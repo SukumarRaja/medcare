@@ -18,10 +18,13 @@ import '../../widgets/room/chechout/payment.dart';
 import '../../widgets/room/chechout/status_container.dart';
 
 class RoomBookingCheckOut extends StatelessWidget {
-  const RoomBookingCheckOut({Key? key}) : super(key: key);
+  const RoomBookingCheckOut({Key? key, required this.fromMain})
+      : super(key: key);
+  final bool fromMain;
 
   @override
   Widget build(BuildContext context) {
+    print("fromMain $fromMain");
     var media = MediaQuery.of(context).size;
     return Material(
       child: Container(
@@ -371,10 +374,16 @@ class RoomBookingCheckOut extends StatelessWidget {
                                 successAlert(context,
                                     content: "Booking Successfully",
                                     confirmButtonPressed: () {
-                                  Get.back();
-                                  Get.back();
-                                  Get.back();
-                                  MainController.to.pageIndex = 2;
+                                  if (fromMain == true) {
+                                    Get.back();
+                                    Get.back();
+                                    MainController.to.pageIndex = 2;
+                                  } else {
+                                    Get.back();
+                                    Get.back();
+                                    Get.back();
+                                    MainController.to.pageIndex = 2;
+                                  }
                                 });
                               },
                               child: Container(
