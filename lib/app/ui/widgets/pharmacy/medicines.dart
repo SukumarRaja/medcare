@@ -94,7 +94,6 @@ class MedicinesCard extends StatelessWidget {
                     child: const Center(
                         child: Icon(
                       Icons.remove,
-                      weight: 10,
                       shadows: [Shadow(color: AppColors.grey, blurRadius: 1)],
                       color: AppColors.primary,
                       size: 20,
@@ -129,7 +128,6 @@ class MedicinesCard extends StatelessWidget {
                     child: const Center(
                         child: Icon(
                       Icons.add,
-                      weight: 10,
                       shadows: [Shadow(color: AppColors.grey, blurRadius: 1)],
                       color: AppColors.primary,
                       size: 20,

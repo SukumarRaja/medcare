@@ -27,7 +27,6 @@ class AddOrRemove extends StatelessWidget {
         child: Center(
             child: Icon(
           icon,
-          weight: 10,
           shadows: const [Shadow(color: AppColors.grey, blurRadius: 1)],
           color: AppColors.primary,
           size: 20,

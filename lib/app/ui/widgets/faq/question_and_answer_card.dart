@@ -39,7 +39,6 @@ class QuestionAndAnswerCard extends StatelessWidget {
                 const Icon(
                   Icons.add,
                   color: AppColors.primary,
-                  weight: 10,
                 ),
                 SizedBox(width: media.width * 0.04)
               ],

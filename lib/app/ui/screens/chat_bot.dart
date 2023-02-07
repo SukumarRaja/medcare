@@ -61,7 +61,6 @@ class ChatBot extends StatelessWidget {
                 child: const Icon(
                   Icons.send,
                   color: AppColors.white,
-                  weight: 15,
                 ),
               ),
             ),
