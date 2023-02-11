@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../../controller/report.dart';
-import '../themes/app_colors.dart';
-import '../themes/app_font_size.dart';
-import '../widgets/common_text.dart';
-import '../widgets/report_card.dart';
+import '../../../controller/report.dart';
+import '../../themes/app_colors.dart';
+import '../../themes/app_font_size.dart';
+import '../../widgets/common_text.dart';
+import '../../widgets/report_card.dart';
+import 'bed.dart';
+import 'case_history.dart';
+import 'documents.dart';
+import 'lab.dart';
+import 'prescription.dart';
+import 'vital_signs.dart';
 
 class Reports extends StatelessWidget {
   const Reports({Key? key}) : super(key: key);
@@ -328,14 +334,36 @@ class Reports extends StatelessWidget {
                 ],
               ),
               SizedBox(height: media.height * 0.02),
-              Obx(() => ListView.builder(
+              ListView.builder(
                   shrinkWrap: true,
-                  itemCount:
-                      ReportController.to.selectReportTypeIndex == 1 ? 3 : 5,
+                  // itemCount:
+                  //     ReportController.to.selectReportTypeIndex == 1 ? 3 : 5,
+                  itemCount: 6,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, int index) {
-                    return const ReportCard();
-                  })),
+                    return ReportCard(
+                      onPressed: () {
+                        if (index == 0) {
+                          Get.to(() => VitalSigns());
+                        }
+                        if (index == 1) {
+                          Get.to(() => CaseHistory());
+                        }
+                        if (index == 2) {
+                          Get.to(() => Prescription());
+                        }
+                        if (index == 3) {
+                          Get.to(() => Lab());
+                        }
+                        if (index == 4) {
+                          Get.to(() => Documents());
+                        }
+                        if (index == 5) {
+                          Get.to(() => Bed());
+                        }
+                      },
+                    );
+                  }),
               SizedBox(height: media.height * 0.02),
             ],
           ),

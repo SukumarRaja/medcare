@@ -15,7 +15,7 @@ import '../family/members.dart';
 import '../faq.dart';
 import '../pharmacy_on_phone.dart';
 import '../refer_friend.dart';
-import '../report.dart';
+import '../reports/report.dart';
 import 'update.dart';
 import 'view.dart';
 
