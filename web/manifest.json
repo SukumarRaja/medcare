@@ -1,6 +1,6 @@
 {
-    "name": "medcare",
-    "short_name": "medcare",
+    "name": "primedix",
+    "short_name": "primedix",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:medcare/app/controller/faq.dart';
+import 'package:primedix/app/controller/faq.dart';
 
 import '../themes/app_colors.dart';
 import '../themes/app_font_size.dart';

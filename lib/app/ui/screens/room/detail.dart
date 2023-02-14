@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:medcare/app/ui/widgets/common_text.dart';
+import 'package:primedix/app/ui/widgets/common_text.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
 import '../../widgets/dotted_divider.dart';

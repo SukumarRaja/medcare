@@ -1,4 +1,4 @@
-package com.limitless.medcare;
+package com.limitless.primedix;
 
 import io.flutter.embedding.android.FlutterActivity;
 

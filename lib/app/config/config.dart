@@ -1,3 +1,3 @@
 class AppConfig{
-  static const baseUrl = "https://medcare.workstation360.org/primedix/apicall.php?";
+  static const baseUrl = "https://primedix.workstation360.org/primedix/apicall.php?";
 }

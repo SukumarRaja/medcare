@@ -89,7 +89,7 @@ class ReferFriend extends StatelessWidget {
             GestureDetector(
               onTap: () async {
                 await Share.share(
-                    "Join me on Medcare using my invite code ${ReferalController.to.referalCode} data To make easy your booking");
+                    "Join me on primedix using my invite code ${ReferalController.to.referalCode} data To make easy your booking");
               },
               child: Center(
                 child: Container(

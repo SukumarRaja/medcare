@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.limitless.patient" "\0"
-            VALUE "FileDescription", "medcare" "\0"
+            VALUE "FileDescription", "primedix" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "medcare" "\0"
+            VALUE "InternalName", "primedix" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.limitless.patient. All rights reserved." "\0"
-            VALUE "OriginalFilename", "medcare.exe" "\0"
-            VALUE "ProductName", "medcare" "\0"
+            VALUE "OriginalFilename", "primedix.exe" "\0"
+            VALUE "ProductName", "primedix" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

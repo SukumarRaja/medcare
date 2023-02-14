@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medcare/app/controller/dash_board.dart';
+import 'package:primedix/app/controller/dash_board.dart';
 import '../../../controller/profile.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';

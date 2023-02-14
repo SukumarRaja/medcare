@@ -1,7 +1,7 @@
 // ignore_for_file: unrelated_type_equality_checks
 
 import 'package:get/get.dart';
-import 'package:medcare/app/controller/auth.dart';
+import 'package:primedix/app/controller/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/model/profile.dart';
 import '../data/repository/profile.dart';

@@ -1,4 +1,4 @@
-import 'package:medcare/app/config/config.dart';
+import 'package:primedix/app/config/config.dart';
 
 class ApiService {
   // auth

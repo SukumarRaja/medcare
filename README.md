@@ -1,4 +1,4 @@
-# medcare
+# primedix
 
 A new Flutter project.
 

@@ -2,9 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medcare/app/controller/auth.dart';
-import 'package:medcare/app/controller/main.dart';
-import 'package:medcare/app/ui/widgets/common_textform_field.dart';
+import 'package:primedix/app/controller/auth.dart';
+import 'package:primedix/app/controller/main.dart';
+import 'package:primedix/app/ui/widgets/common_textform_field.dart';
 import '../../../controller/payment.dart';
 import '../../../controller/room.dart';
 import '../../themes/app_colors.dart';
