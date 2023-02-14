@@ -26,7 +26,9 @@ class HomeMain extends StatelessWidget {
         init: DashboardController(),
         initState: (_) {
           DashboardController.to.getProfile();
-          DashboardController.to.getInitialData();
+          Future.delayed(const Duration(seconds: 2), () {
+            DashboardController.to.getInitialData();
+          });
           SliderController.to.getImageSliders();
         },
         builder: (_) {

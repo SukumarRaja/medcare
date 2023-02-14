@@ -52,7 +52,7 @@ class Home extends StatelessWidget {
                       children: [
                         Obx(() => CommonText(
                               text:
-                                  "Hi, ${DashboardController.to.patientName == "" ? "..." : DashboardController.to.patientName}",
+                                  "Hi, ${DashboardController.to.patientName == "" ? "${DashboardController.to.profileDetails.name}" : DashboardController.to.patientName}",
                               fontColor: AppColors.black,
                               fontSize: AppFontSize.twenty,
                               fontWeight: FontWeight.w500,
