@@ -159,6 +159,76 @@ successAlert(BuildContext context,
   );
 }
 
+errorAlert(BuildContext context,
+    {required String content, required Function() confirmButtonPressed}) {
+  var media = MediaQuery.of(context).size;
+  Widget continueButton = TextButton(
+    onPressed: confirmButtonPressed,
+    child: Container(
+      // height: 30,
+      width: media.width,
+      padding: const EdgeInsets.only(top: 15, bottom: 15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: AppColors.primary,
+        gradient: const LinearGradient(
+            colors: [AppColors.primary, AppColors.buttonGradient],
+            begin: Alignment.topRight,
+            end: Alignment.topLeft),
+      ),
+      child: const Center(
+        child: CommonText(
+          text: "Ok",
+          fontColor: AppColors.white,
+        ),
+      ),
+    ),
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(
+        Radius.circular(15.0),
+      ),
+    ),
+    backgroundColor: Colors.grey.shade300,
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CommonText(
+              textAlign: TextAlign.center,
+              text: content,
+            )
+          ],
+        ),
+        SizedBox(
+          height: media.width * 0.02,
+        ),
+        const Icon(
+          Icons.cancel,
+          color: AppColors.red,
+          size: 35,
+        ),
+      ],
+    ),
+    actions: [
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
 rejectDialog(BuildContext context,
     {required String content, required Function() confirmButtonPressed}) {
   var media = MediaQuery.of(context).size;

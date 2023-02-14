@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:medcare/app/ui/themes/app_colors.dart';
 import 'app/routes/app_routes.dart';
+import 'app/ui/themes/app_colors.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       getPages: AppRoutes.routes,
-      initialRoute: "/login",
+      initialRoute: "/",
       debugShowCheckedModeBanner: false,
     );
   }

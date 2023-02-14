@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
-
+import '../../../controller/dash_board.dart';
 import '../../../utility/utility.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
@@ -58,12 +57,14 @@ class Profile extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const CommonText(
-                          text: "Name",
+                        CommonText(
+                          text:
+                              "${DashboardController.to.patientName == "" ? "..." : DashboardController.to.patientName}",
                           fontSize: AppFontSize.eighteen,
                         ),
                         CommonText(
-                          text: "test@gmail.com",
+                          text:
+                              "${DashboardController.to.patientEmail == "" ? "..." : DashboardController.to.patientEmail}",
                           fontColor: AppColors.black.withOpacity(.5),
                           fontSize: AppFontSize.fourteen,
                         ),

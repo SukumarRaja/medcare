@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import 'dash_board.dart';
+
 class ProfileController extends GetxController {
   static ProfileController get to => Get.put(ProfileController());
 
@@ -20,11 +22,11 @@ class ProfileController extends GetxController {
   }
 
   data() {
-    name.text = "Test Name";
-    email.text = "test@gmail.com";
-    phone.text = "+91 8698923685";
-    gender.text = "Female";
-    dob.text = "25/12/1997";
-    address.text = "Namakkal";
+    name.text = "${DashboardController.to.profileDetails.name ?? "N/A"}";
+    email.text = "${DashboardController.to.profileDetails.email ?? "N/A"}";
+    phone.text = "+91 ${DashboardController.to.profileDetails.phone ?? "N/A"}";
+    gender.text = "${DashboardController.to.profileDetails.sex ?? "N/A"}";
+    dob.text = "${DashboardController.to.profileDetails.birthdate ?? "N/A"}";
+    address.text = "${DashboardController.to.profileDetails.address ?? "N/A"}";
   }
 }

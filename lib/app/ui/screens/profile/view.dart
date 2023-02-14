@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medcare/app/controller/dash_board.dart';
 import '../../../controller/profile.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
@@ -58,18 +59,36 @@ class ProfileView extends StatelessWidget {
                           "https://www.dragarwal.com/wp-content/uploads/2022/02/eye-doctor-popup.png")),
                 ),
               ),
-              const CommonText(
-                text: "ID: PAT001",
-                fontColor: AppColors.black,
-                fontSize: AppFontSize.sixteen,
-              ),
-              buildContainer(media, icon: Icons.person, text: "Test Name"),
-              buildContainer(media, icon: Icons.email, text: "test@email.com"),
-              buildContainer(media, icon: Icons.phone, text: "+91 8964896932"),
-              buildContainer(media, icon: Icons.female, text: "Female"),
+              Obx(() => CommonText(
+                    text:
+                        "ID: PAT${DashboardController.to.profileDetails.patientId ?? " N/A"}",
+                    fontColor: AppColors.black,
+                    fontSize: AppFontSize.sixteen,
+                  )),
               buildContainer(media,
-                  icon: Icons.date_range_outlined, text: "12/01/1997"),
-              buildContainer(media, icon: Icons.location_on, text: "Namakkal"),
+                  icon: Icons.person,
+                  text:
+                      "${DashboardController.to.profileDetails.name ?? " N/A"}"),
+              buildContainer(media,
+                  icon: Icons.email,
+                  text:
+                      "${DashboardController.to.profileDetails.email ?? " N/A"}"),
+              buildContainer(media,
+                  icon: Icons.phone,
+                  text:
+                      "+91 ${DashboardController.to.profileDetails.phone ?? " N/A"}"),
+              buildContainer(media,
+                  icon: Icons.female,
+                  text:
+                      "${DashboardController.to.profileDetails.sex ?? " N/A"}"),
+              buildContainer(media,
+                  icon: Icons.date_range_outlined,
+                  text:
+                      "${DashboardController.to.profileDetails.birthdate ?? " N/A"}"),
+              buildContainer(media,
+                  icon: Icons.location_on,
+                  text:
+                      "${DashboardController.to.profileDetails.address ?? " N/A"}"),
               password(media,
                   icon: Icons.lock,
                   text: "**********",

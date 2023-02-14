@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../controller/dash_board.dart';
 import '../../../controller/home.dart';
 import '../../../controller/slider.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
 import '../../widgets/banner.dart';
-import '../../widgets/clipers/bottom_wave.dart';
 import '../../widgets/common_text.dart';
 import '../../widgets/home/doctors_card.dart';
 import '../../widgets/home/main_category.dart';
-import '../doctor/all_doctors.dart';
+
 import '../doctor/detail.dart';
 import '../notifications.dart';
 
@@ -19,7 +19,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
-    SliderController.to.getImageSliders();
+
     return Scaffold(
       // backgroundColor: AppColors.primary.withOpacity(.04),
       body: SafeArea(
@@ -50,12 +50,13 @@ class Home extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CommonText(
-                          text: "Hi, Test User",
-                          fontColor: AppColors.black,
-                          fontSize: AppFontSize.twenty,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        Obx(() => CommonText(
+                              text:
+                                  "Hi, ${DashboardController.to.patientName == "" ? "..." : DashboardController.to.patientName}",
+                              fontColor: AppColors.black,
+                              fontSize: AppFontSize.twenty,
+                              fontWeight: FontWeight.w500,
+                            )),
                         CommonText(
                           text: "How are you feel today",
                           fontColor: AppColors.grey.withOpacity(.7),
