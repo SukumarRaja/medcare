@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../config/config.dart';
 import '../../../controller/dash_board.dart';
 import '../../../controller/home.dart';
 import '../../../controller/slider.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
 import '../../widgets/banner.dart';
+import '../../widgets/common_loading.dart';
 import '../../widgets/common_text.dart';
 import '../../widgets/home/doctors_card.dart';
 import '../../widgets/home/main_category.dart';
@@ -34,25 +36,36 @@ class Home extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 60,
-                      width: 60,
-                      decoration: const BoxDecoration(
-                          // borderRadius: BorderRadius.circular(10.0),
-                          shape: BoxShape.circle,
-                          color: AppColors.yellow,
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  "https://expertphotography.b-cdn.net/wp-content/uploads/2018/10/cool-profile-pictures-retouching-1.jpg"))),
-                    ),
+                    Obx(() => DashboardController.to.getProfileLoading == true
+                        ? const CommonLoading(
+                            size: 60,
+                            color: AppColors.primary,
+                          )
+                        : Container(
+                            height: 60,
+                            width: 60,
+                            decoration: BoxDecoration(
+                                // borderRadius: BorderRadius.circular(10.0),
+                                shape: BoxShape.circle,
+                                color: AppColors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: AppColors.grey.withOpacity(.2),
+                                      spreadRadius: 1,
+                                      blurRadius: 2)
+                                ],
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(
+                                        "${AppConfig.imageUrl}${DashboardController.to.profileDetails.imgUrl}"))),
+                          )),
                     SizedBox(width: media.width * 0.04),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Obx(() => CommonText(
                               text:
-                                  "Hi, ${DashboardController.to.patientName == "" ? "${DashboardController.to.profileDetails.name}" : DashboardController.to.patientName}",
+                                  "Hi, ${DashboardController.to.profileDetails.name ?? "..."}",
                               fontColor: AppColors.black,
                               fontSize: AppFontSize.twenty,
                               fontWeight: FontWeight.w500,

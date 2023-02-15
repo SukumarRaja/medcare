@@ -3,7 +3,7 @@
 import 'package:get/get.dart';
 import 'package:primedix/app/controller/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../data/model/profile.dart';
+import '../data/model/profile/profile.dart';
 import '../data/repository/profile.dart';
 import '../ui/widgets/common_print.dart';
 import 'main.dart';

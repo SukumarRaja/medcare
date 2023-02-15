@@ -4,13 +4,17 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../themes/app_colors.dart';
 
 class CommonLoading extends StatelessWidget {
-  const CommonLoading({Key? key}) : super(key: key);
+  const CommonLoading(
+      {Key? key, this.color = AppColors.primary, this.size = 80})
+      : super(key: key);
+  final Color color;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
-    return const SpinKitPulse(
-      color: AppColors.primary,
-      size: 80.0,
+    return SpinKitPulse(
+      color: color,
+      size: size,
     );
   }
 }

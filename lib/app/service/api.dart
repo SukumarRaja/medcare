@@ -7,4 +7,6 @@ class ApiService {
 
   //profile
   static const getProfile = "${AppConfig.baseUrl}getprofile=";
+  static const updateProfile = "${AppConfig.baseUrl}action=updateprofile";
+
 }

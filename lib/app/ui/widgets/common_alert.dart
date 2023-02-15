@@ -409,3 +409,25 @@ updateAlertDialog(BuildContext context,
     },
   );
 }
+
+loadingAlertDialog(BuildContext context, {required Widget child}) {
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+      alignment: Alignment.bottomCenter,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(15.0),
+        ),
+      ),
+      backgroundColor: Colors.grey.shade300,
+      content: child);
+
+  // show the dialog
+  showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}

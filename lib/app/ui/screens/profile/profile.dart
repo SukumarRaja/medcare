@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../config/config.dart';
 import '../../../controller/dash_board.dart';
 import '../../../utility/utility.dart';
 import '../../themes/app_colors.dart';
@@ -49,22 +50,22 @@ class Profile extends StatelessWidget {
                                 spreadRadius: 1,
                                 offset: const Offset(0.1, 0.3))
                           ],
-                          image: const DecorationImage(
+                          image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
-                                  "https://www.dragarwal.com/wp-content/uploads/2022/02/eye-doctor-popup.png"))),
+                                  "${AppConfig.imageUrl}${DashboardController.to.profileDetails.imgUrl}"))),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CommonText(
                           text:
-                              "${DashboardController.to.patientName == "" ? "..." : DashboardController.to.patientName}",
+                              "${DashboardController.to.profileDetails.name ?? "..."}",
                           fontSize: AppFontSize.eighteen,
                         ),
                         CommonText(
                           text:
-                              "${DashboardController.to.patientEmail == "" ? "..." : DashboardController.to.patientEmail}",
+                              "${DashboardController.to.profileDetails.email ?? "..."}",
                           fontColor: AppColors.black.withOpacity(.5),
                           fontSize: AppFontSize.fourteen,
                         ),
