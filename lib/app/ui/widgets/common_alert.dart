@@ -410,16 +410,16 @@ updateAlertDialog(BuildContext context,
   );
 }
 
-loadingAlertDialog(BuildContext context, {required Widget child}) {
+dynamic loadingAlertDialog(BuildContext context, {required Widget child}) {
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.center,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(15.0),
         ),
       ),
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Colors.transparent,
       content: child);
 
   // show the dialog

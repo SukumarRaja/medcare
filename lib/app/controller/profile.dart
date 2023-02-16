@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:primedix/app/ui/screens/login.dart';
+import 'package:primedix/app/ui/widgets/common_loading.dart';
+import 'package:primedix/app/ui/widgets/common_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/repository/profile.dart';
+import '../ui/themes/app_colors.dart';
+import '../ui/widgets/common_alert.dart';
 import '../ui/widgets/common_print.dart';
 import '../ui/widgets/common_snackbar.dart';
 import 'dash_board.dart';
@@ -52,6 +57,14 @@ class ProfileController extends GetxController {
 
   set isDataChangedForUpdate(value) {
     _isDataChangedForUpdate.value = value;
+  }
+
+  final _logoutLoading = false.obs;
+
+  get logoutLoading => _logoutLoading.value;
+
+  set logoutLoading(value) {
+    _logoutLoading.value = value;
   }
 
   data() {
@@ -122,5 +135,22 @@ class ProfileController extends GetxController {
           status: "422",
           msg: "Error from update profile due to wrong data or format $e");
     }
+  }
+
+  logout() async {
+    Get.back();
+    logoutLoading = true;
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var id = pref.getString('patientId');
+    Future.delayed(const Duration(seconds: 4), () async {
+      logoutLoading = false;
+      if (id != null && id.isNotEmpty) {
+        pref.remove('patientId');
+        debugPrint("Logout Successfully in Token: $id");
+        await Get.off(() => const Login());
+      } else {
+        return false;
+      }
+    });
   }
 }

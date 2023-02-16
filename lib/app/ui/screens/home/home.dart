@@ -56,8 +56,11 @@ class Home extends StatelessWidget {
                                 ],
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
-                                    image: NetworkImage(
-                                        "${AppConfig.imageUrl}${DashboardController.to.profileDetails.imgUrl}"))),
+                                    image: NetworkImage(DashboardController
+                                                .to.profileDetails.imgUrl ==
+                                            null
+                                        ? AppConfig.noImage
+                                        : "${AppConfig.imageUrl}${DashboardController.to.profileDetails.imgUrl}"))),
                           )),
                     SizedBox(width: media.width * 0.04),
                     Column(

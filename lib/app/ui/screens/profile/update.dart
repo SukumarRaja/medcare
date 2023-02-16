@@ -95,8 +95,13 @@ class ProfileUpdate extends StatelessWidget {
                                       ],
                                       image: DecorationImage(
                                           fit: BoxFit.cover,
-                                          image: NetworkImage(
-                                              "${AppConfig.imageUrl}${DashboardController.to.profileDetails.imgUrl}")),
+                                          image: NetworkImage(DashboardController
+                                                      .to
+                                                      .profileDetails
+                                                      .imgUrl ==
+                                                  null
+                                              ? AppConfig.noImage
+                                              : "${AppConfig.imageUrl}${DashboardController.to.profileDetails.imgUrl}")),
                                     ),
                                   ),
                           ),

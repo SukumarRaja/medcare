@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:primedix/app/controller/auth.dart';
 import '../../controller/otp.dart';
 import '../themes/app_colors.dart';
 import '../themes/app_font_size.dart';
@@ -54,7 +55,7 @@ class OtpVerify extends StatelessWidget {
             Center(
               child: CommonText(
                 text:
-                    "Please type the OTP as shared on your mobile XXXXXXX1236",
+                    "Please type the OTP as shared on your ${AuthController.to.vEmail.text}",
                 fontColor: AppColors.black.withOpacity(.4),
               ),
             ),

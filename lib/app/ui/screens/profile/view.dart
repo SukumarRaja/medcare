@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:primedix/app/controller/dash_board.dart';
+import '../../../config/config.dart';
 import '../../../controller/profile.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_font_size.dart';
@@ -38,27 +39,30 @@ class ProfileView extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                width: media.width * 0.3,
-                height: media.width * 0.3,
-                margin: const EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.grey.withOpacity(.2),
-                      spreadRadius: 1,
-                      blurRadius: 2,
-                      offset: const Offset(0.1, 0.6),
-                    )
-                  ],
-                  image: const DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                          "https://www.dragarwal.com/wp-content/uploads/2022/02/eye-doctor-popup.png")),
-                ),
-              ),
+              Obx(() => Container(
+                    width: media.width * 0.3,
+                    height: media.width * 0.3,
+                    margin: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.grey.withOpacity(.2),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: const Offset(0.1, 0.6),
+                        )
+                      ],
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(DashboardController
+                                      .to.profileDetails.imgUrl ==
+                                  null
+                              ? AppConfig.noImage
+                              : "${AppConfig.imageUrl}${DashboardController.to.profileDetails.imgUrl}")),
+                    ),
+                  )),
               Obx(() => CommonText(
                     text:
                         "ID: PAT${DashboardController.to.profileDetails.patientId ?? " N/A"}",

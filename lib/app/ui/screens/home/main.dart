@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:primedix/app/config/config.dart';
 import '../../../controller/dash_board.dart';
 import '../../../controller/main.dart';
+import '../../../controller/profile.dart';
 import '../../../controller/slider.dart';
 import '../../themes/app_colors.dart';
 import '../appointment/appointments.dart';
@@ -25,6 +27,7 @@ class HomeMain extends StatelessWidget {
     return GetBuilder(
         init: DashboardController(),
         initState: (_) {
+          AppConfig.baseUrl;
           DashboardController.to.getProfile();
           Future.delayed(const Duration(seconds: 2), () {
             DashboardController.to.getInitialData();
@@ -35,6 +38,9 @@ class HomeMain extends StatelessWidget {
           return Scaffold(
             bottomNavigationBar: Obx(
               () => BottomNavigationBar(
+                backgroundColor: ProfileController.to.logoutLoading == true
+                    ? AppColors.black.withOpacity(.6)
+                    : null,
                 currentIndex: MainController.to.pageIndex,
                 type: BottomNavigationBarType.fixed,
                 unselectedItemColor: AppColors.grey,
@@ -45,9 +51,11 @@ class HomeMain extends StatelessWidget {
                 selectedLabelStyle: const TextStyle(fontFamily: "Oswald"),
                 selectedIconTheme: const IconThemeData(color: AppColors.green),
                 unselectedIconTheme: const IconThemeData(color: AppColors.grey),
-                onTap: (data) {
-                  MainController.to.pageIndex = data;
-                },
+                onTap: ProfileController.to.logoutLoading == true
+                    ? null
+                    : (data) {
+                        MainController.to.pageIndex = data;
+                      },
                 items: const [
                   BottomNavigationBarItem(
                       icon: Icon(Icons.person), label: "Profile"),
