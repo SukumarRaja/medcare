@@ -8,7 +8,7 @@ class AppointmentsCard extends StatelessWidget {
   const AppointmentsCard(
       {Key? key,
       required this.doctorName,
-      required this.specialist,
+      required this.treatement,
       required this.date,
       required this.time,
       required this.image,
@@ -17,7 +17,7 @@ class AppointmentsCard extends StatelessWidget {
       required this.slots})
       : super(key: key);
   final String doctorName;
-  final String specialist;
+  final String treatement;
   final String date;
   final String time;
   final String image;
@@ -92,7 +92,7 @@ class AppointmentsCard extends StatelessWidget {
                       children: [
                         CommonText(text: "Dr.$doctorName"),
                         CommonText(
-                          text: specialist,
+                          text: treatement,
                         ),
                         CommonText(
                           text: date,

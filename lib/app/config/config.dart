@@ -5,4 +5,5 @@ class AppConfig {
       "https://medcare.workstation360.org/primedix/uploads/";
   static const noImage =
       "https://divedigital.id/wp-content/uploads/2022/07/1-Blank-TikTok-Default-PFP.jpg";
+  static const hospitalId = "106";
 }

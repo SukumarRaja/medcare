@@ -29,6 +29,7 @@ class HomeMain extends StatelessWidget {
         initState: (_) {
           AppConfig.baseUrl;
           DashboardController.to.getProfile();
+          DashboardController.to.getDoctors();
           Future.delayed(const Duration(seconds: 2), () {
             DashboardController.to.getInitialData();
           });

@@ -8,21 +8,27 @@ import '../common_text.dart';
 class VitalSignsCard extends StatelessWidget {
   const VitalSignsCard(
       {Key? key,
-      required this.doctorName,
-      required this.specialist,
-      required this.experience,
-      required this.patients,
-      required this.image,
+      required this.heartRate,
+      required this.dBloodPressure,
+      required this.temperature,
+      required this.oxygen,
+      required this.respiratory,
       required this.onPressed,
-      required this.isAvailable})
+      required this.date,
+      required this.weight,
+      required this.height,
+      required this.sBloodPressure})
       : super(key: key);
-  final String doctorName;
-  final String specialist;
-  final String experience;
-  final String patients;
-  final String image;
+  final String heartRate;
+  final String dBloodPressure;
+  final String sBloodPressure;
+  final String temperature;
+  final String oxygen;
+  final String respiratory;
+  final String weight;
+  final String height;
   final Function() onPressed;
-  final bool isAvailable;
+  final String date;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +71,7 @@ class VitalSignsCard extends StatelessWidget {
                         width: 20,
                       ),
                     ),
-                    CommonText(text: "Heart Rate"),
+                    const CommonText(text: "Heart Rate"),
                   ],
                 ),
                 Row(
@@ -78,7 +84,7 @@ class VitalSignsCard extends StatelessWidget {
                         width: 20,
                       ),
                     ),
-                    CommonText(text: "Blood Pressure"),
+                    const CommonText(text: "Blood\nPressure"),
                   ],
                 ),
                 Row(
@@ -91,7 +97,7 @@ class VitalSignsCard extends StatelessWidget {
                         width: 20,
                       ),
                     ),
-                    CommonText(text: "Temperature"),
+                    const CommonText(text: "Temperature"),
                   ],
                 ),
                 Row(
@@ -104,7 +110,7 @@ class VitalSignsCard extends StatelessWidget {
                         width: 20,
                       ),
                     ),
-                    CommonText(text: "Oxygen Saturation"),
+                    const CommonText(text: "Oxygen\nSaturation"),
                   ],
                 ),
               ],
@@ -112,22 +118,22 @@ class VitalSignsCard extends StatelessWidget {
             // colan
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(height: 20, child: CommonText(text: ":")),
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(height: 20, child: CommonText(text: ":")),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(height: 20, child: CommonText(text: ":")),
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(height: 20, child: CommonText(text: ":")),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(height: 20, child: CommonText(text: ":")),
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(height: 20, child: CommonText(text: ":")),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(height: 20, child: CommonText(text: ":")),
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(height: 20, child: CommonText(text: ":")),
                 ),
               ],
             ),
@@ -137,24 +143,75 @@ class VitalSignsCard extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child: Container(height: 20, child: CommonText(text: "80")),
+                  child: SizedBox(
+                      height: 20,
+                      child: Row(
+                        children: [
+                          CommonText(text: heartRate),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 6.0),
+                            child: CommonText(
+                              text: " bpm",
+                              fontSize: AppFontSize.twelve,
+                            ),
+                          ),
+                        ],
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child:
-                      Container(height: 20, child: CommonText(text: "80/80")),
+                  child: SizedBox(
+                      height: 20,
+                      child: Row(
+                        children: [
+                          CommonText(text: "$sBloodPressure/$dBloodPressure"),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 6.0),
+                            child: CommonText(
+                              text: " mmHg",
+                              fontSize: AppFontSize.twelve,
+                            ),
+                          ),
+                        ],
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child: Container(height: 20, child: CommonText(text: "85")),
+                  child: SizedBox(
+                      height: 20,
+                      child: Row(
+                        children: [
+                          CommonText(text: temperature),
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 8.0),
+                            child: CommonText(
+                              text: " °C",
+                              fontSize: AppFontSize.twelve,
+                            ),
+                          ),
+                        ],
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child: Container(height: 20, child: CommonText(text: "85")),
+                  child: SizedBox(
+                      height: 20,
+                      child: Row(
+                        children: [
+                          CommonText(text: oxygen),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 6.0),
+                            child: CommonText(
+                              text: " %",
+                              fontSize: AppFontSize.twelve,
+                            ),
+                          ),
+                        ],
+                      )),
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
 
             //second half
             //icon and title
@@ -171,7 +228,7 @@ class VitalSignsCard extends StatelessWidget {
                         width: 20,
                       ),
                     ),
-                    CommonText(text: "Respiratory\nRate"),
+                    const CommonText(text: "Respiratory\nRate"),
                   ],
                 ),
                 Row(
@@ -184,7 +241,7 @@ class VitalSignsCard extends StatelessWidget {
                         width: 20,
                       ),
                     ),
-                    CommonText(text: "BMI Weight"),
+                    const CommonText(text: "BMI Weight"),
                   ],
                 ),
                 Row(
@@ -197,7 +254,7 @@ class VitalSignsCard extends StatelessWidget {
                         width: 20,
                       ),
                     ),
-                    CommonText(text: "BMI Height"),
+                    const CommonText(text: "BMI Height"),
                   ],
                 ),
                 Row(
@@ -210,7 +267,7 @@ class VitalSignsCard extends StatelessWidget {
                         width: 20,
                       ),
                     ),
-                    CommonText(text: "Date"),
+                    const CommonText(text: "Date"),
                   ],
                 ),
               ],
@@ -218,22 +275,22 @@ class VitalSignsCard extends StatelessWidget {
             // colan
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(height: 20, child: CommonText(text: ":")),
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(height: 20, child: CommonText(text: ":")),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(height: 20, child: CommonText(text: ":")),
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(height: 20, child: CommonText(text: ":")),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(height: 20, child: CommonText(text: ":")),
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(height: 20, child: CommonText(text: ":")),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(height: 20, child: CommonText(text: ":")),
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(height: 20, child: CommonText(text: ":")),
                 ),
               ],
             ),
@@ -243,26 +300,65 @@ class VitalSignsCard extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child: Container(height: 20, child: CommonText(text: "13")),
+                  child: SizedBox(
+                      height: 20,
+                      child: Row(
+                        children: [
+                          CommonText(text: respiratory),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 6.0),
+                            child: CommonText(
+                              text: " bpm",
+                              fontSize: AppFontSize.twelve,
+                            ),
+                          ),
+                        ],
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child: Container(height: 20, child: CommonText(text: "30")),
+                  child: SizedBox(
+                      height: 20,
+                      child: Row(
+                        children: [
+                          CommonText(text: weight),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 6.0),
+                            child: CommonText(
+                              text: " Kg",
+                              fontSize: AppFontSize.twelve,
+                            ),
+                          ),
+                        ],
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child: Container(height: 20, child: CommonText(text: "130")),
+                  child: SizedBox(
+                      height: 20,
+                      child: Row(
+                        children: [
+                          CommonText(text: height),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 6.0),
+                            child: CommonText(
+                              text: " Cm",
+                              fontSize: AppFontSize.twelve,
+                            ),
+                          ),
+                        ],
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child: Container(
+                  child: SizedBox(
                     height: 20,
-                    child: CommonText(text: "01/02/2023"),
+                    child: CommonText(text: date),
                   ),
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             )
           ],

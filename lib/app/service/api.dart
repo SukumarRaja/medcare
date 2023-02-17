@@ -14,4 +14,13 @@ class ApiService {
 
   //update password
   static const updatePassword = "${AppConfig.baseUrl}action=updatePassword";
+
+  //doctor
+  static const getDoctors = "${AppConfig.baseUrl}getdoctors=";
+
+  // appointment
+  static const getAppointments = "${AppConfig.baseUrl}getappointment=";
+
+  //report
+  static const getVitalSigns = "${AppConfig.baseUrl}getvital=";
 }

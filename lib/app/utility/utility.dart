@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 makePhoneCall({required String phoneNumber}) async {
@@ -26,4 +27,10 @@ launchInWebView({required url}) async {
   )) {
     throw 'Could not launch $url';
   }
+}
+
+dynamic stringToInt({required data}) async {
+  var con = int.parse(data);
+  debugPrint("convert string to int is: $con");
+  return con;
 }
